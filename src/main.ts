@@ -49,13 +49,10 @@ export default class MdxAsMdPlugin extends Plugin {
 
 class SampleSettingTab extends PluginSettingTab {
 	plugin: MdxAsMdPlugin;
-  warningDisplay: string = 'none';
-  startingSetting: string;
 
 	constructor(app: App, plugin: MdxAsMdPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
-    this.startingSetting = this.plugin.settings.mySetting
 	}
 
 	display(): void {
@@ -73,14 +70,6 @@ class SampleSettingTab extends PluginSettingTab {
 				.setValue(this.plugin.settings.mySetting)
 				.onChange(async (value) => {
           this.plugin.settings.mySetting = value;
-          if (this.startingSetting == value)
-          {
-            this.warningDisplay = 'none';
-          }
-          else
-          {
-            this.warningDisplay = 'block';
-          }
         }));
     
     new Setting(containerEl)
@@ -91,12 +80,9 @@ class SampleSettingTab extends PluginSettingTab {
         button.onClick(async () => {
           await this.plugin.saveSettings();
           await this.plugin.doRegisterExtensions();
-          this.warningDisplay = 'none';
           this.display();
         });
         button.setCta();
       });
-
-    containerEl.createDiv({text: 'Unsaved changes - click save to apply.', attr: {'style': `color: red; display: ${this.warningDisplay};`}});
 	}
 }
