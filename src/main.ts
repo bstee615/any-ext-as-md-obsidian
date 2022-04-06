@@ -49,10 +49,13 @@ export default class MdxAsMdPlugin extends Plugin {
 
 class SampleSettingTab extends PluginSettingTab {
 	plugin: MdxAsMdPlugin;
+  warningDisplay: string = 'none';
+  startingSetting: string;
 
 	constructor(app: App, plugin: MdxAsMdPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
+    this.startingSetting = this.plugin.settings.mySetting
 	}
 
 	display(): void {
@@ -62,17 +65,25 @@ class SampleSettingTab extends PluginSettingTab {
 
 		containerEl.createEl('h2', {text: 'Settings for my awesome plugin.'});
 
-		let extensionsInput = new Setting(containerEl)
+		new Setting(containerEl)
 			.setName('File extensions to recognize as Markdown')
 			.setDesc('Comma-delimited (e.g. "txt,mdx,rmd"). Currently registered extensions: ' + this.plugin.currentlyRegisteredPretty)
 			.addText(text => text
 				.setPlaceholder('Enter your Markdown file extensions')
 				.setValue(this.plugin.settings.mySetting)
 				.onChange(async (value) => {
-          this.plugin.settings.mySetting = value
+          this.plugin.settings.mySetting = value;
+          if (this.startingSetting == value)
+          {
+            this.warningDisplay = 'none';
+          }
+          else
+          {
+            this.warningDisplay = 'block';
+          }
         }));
-        
-		new Setting(containerEl)
+    
+    new Setting(containerEl)
       .setName('Save file extensions')
       .setDesc('Save and register the current set of file extensions.')
       .addButton((button: ButtonComponent) => {
@@ -80,9 +91,12 @@ class SampleSettingTab extends PluginSettingTab {
         button.onClick(async () => {
           await this.plugin.saveSettings();
           await this.plugin.doRegisterExtensions();
+          this.warningDisplay = 'none';
           this.display();
         });
         button.setCta();
       });
+
+    containerEl.createDiv({text: 'Unsaved changes - click save to apply.', attr: {'style': `color: red; display: ${this.warningDisplay};`}});
 	}
 }
