@@ -6,6 +6,6 @@ export default class MdxAsMdPlugin extends Plugin {
     super.onload();
 
     // register the view and extensions
-    this.registerExtensions(["mdx"], "markdown");
+    this.registerExtensions(["rmd"], "markdown");
   }
 }
