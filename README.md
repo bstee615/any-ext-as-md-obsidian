@@ -1,9 +1,7 @@
-# mdx as md Obsidian plugin
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/mkozhukharenko/mdx-as-md-obsidian?style=for-the-badge&sort=semver)](https://github.com/mkozhukharenko/mdx-as-md-obsidian/releases/latest)
-![GitHub All Releases](https://img.shields.io/github/downloads/mkozhukharenko/mdx-as-md-obsidian/total?style=for-the-badge)
+# any ext as md Obsidian plugin
 
-A plugin for [Obsidian](https://obsidian.md) which allows editing of mdx files as if they were markdown.
-
+A plugin for [Obsidian](https://obsidian.md) which allows editing of files with any file extension as if they were markdown.
+Forked from https://github.com/mkozhukharenko/mdx-as-md-obsidian.
 
 ### Compatibility
 
@@ -19,6 +17,7 @@ From Obsidian v0.9.8, you can activate this plugin within Obsidian by doing the 
 - Search for this plugin
 - Click Install
 - Once installed, close the community plugins window and activate the newly installed plugin
+
 #### Updates
 You can follow the same procedure to update the plugin
 

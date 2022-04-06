@@ -1,7 +1,7 @@
 {
-  "name": "mdx-as-md-obsidian",
+  "name": "any-ext-as-md-obsidian",
   "version": "0.0.1",
-  "description": "Edit mdx files as if they were markdown",
+  "description": "Edit files with any file extension as if they were markdown",
   "main": "main.js",
   "scripts": {
     "install-deps": "npm install",

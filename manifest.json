@@ -1,10 +1,10 @@
 {
-  "id": "mdx-as-md-obsidian",
+  "id": "any-ext-as-md-obsidian",
   "version": "0.0.1",
-  "description": "Edit mdx files as if they were markdown",
-  "name": "mdx as md",
-  "author": "death_au",
-  "authorUrl": "https://github.com/mkozhukharenko",
+  "description": "Edit files with any file extension as if they were markdown",
+  "name": "any ext as md",
+  "author": "bstee615",
+  "authorUrl": "https://github.com/bstee615",
   "isDesktopOnly": false,
   "minAppVersion": "0.10.12"
 }
